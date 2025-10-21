@@ -23,14 +23,14 @@ export const CTABanner = () => {
             className="text-lg"
             asChild
           >
-            <a href="https://instagram.com/_creative_12" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/_creative_.12/" target="_blank" rel="noopener noreferrer">
               <Instagram className="mr-2 h-5 w-5" />
               Start Your Custom Order
             </a>
           </Button>
 
           <p className="text-sm text-muted-foreground mt-6">
-            Follow @_creative_12 for daily inspiration and behind-the-scenes looks
+            Follow @_creative_.12 for daily inspiration and behind-the-scenes looks
           </p>
         </div>
       </div>
