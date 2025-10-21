@@ -37,7 +37,7 @@ export const Hero = () => {
             className="text-lg"
             asChild
           >
-            <a href="https://instagram.com/_creative_12" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/_creative_.12/" target="_blank" rel="noopener noreferrer">
               <Instagram className="mr-2 h-5 w-5" />
               DM for Custom Orders
             </a>

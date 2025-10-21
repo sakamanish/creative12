@@ -6,6 +6,8 @@ import embroidery3 from "@/assets/embroidery-3.jpg";
 import doodle1 from "@/assets/doodle-1.jpg";
 import doodle2 from "@/assets/doodle-2.jpg";
 import doodle3 from "@/assets/doodle-3.jpg";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 const instagramPosts = [
   { 
@@ -71,39 +73,48 @@ export const InstagramFeed = () => {
           </Button>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {instagramPosts.map((post, index) => (
-            <a
-              key={index}
-              href="https://www.instagram.com/_creative_.12/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-glow transition-all duration-300 animate-slide-up bg-card"
-              style={{ animationDelay: `${index * 50}ms` }}
-            >
-              <div className="aspect-square overflow-hidden">
-                <img
-                  src={post.image}
-                  alt={post.caption}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                <div className="flex items-center gap-4 text-white mb-2">
-                  <div className="flex items-center gap-1">
-                    <Heart className="h-5 w-5" />
-                    <span className="font-semibold">{post.likes}</span>
+        <Carousel
+          opts={{ align: "start", loop: true }}
+          plugins={[Autoplay({ delay: 2500, stopOnInteraction: true })]}
+          className="w-full"
+        >
+          <CarouselContent>
+            {instagramPosts.map((post, index) => (
+              <CarouselItem key={index} className="sm:basis-1/2 lg:basis-1/3">
+                <a
+                  href="https://www.instagram.com/_creative_.12/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-glow transition-all duration-300 bg-card"
+                >
+                  <div className="aspect-square overflow-hidden">
+                    <img
+                      src={post.image}
+                      alt={post.caption}
+                      loading="lazy"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
-                  <div className="flex items-center gap-1">
-                    <MessageCircle className="h-5 w-5" />
-                    <span className="font-semibold">{post.comments}</span>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                    <div className="flex items-center gap-4 text-white mb-2">
+                      <div className="flex items-center gap-1">
+                        <Heart className="h-5 w-5" />
+                        <span className="font-semibold">{post.likes}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <MessageCircle className="h-5 w-5" />
+                        <span className="font-semibold">{post.comments}</span>
+                      </div>
+                    </div>
+                    <p className="text-white text-sm line-clamp-2">{post.caption}</p>
                   </div>
-                </div>
-                <p className="text-white text-sm line-clamp-2">{post.caption}</p>
-              </div>
-            </a>
-          ))}
-        </div>
+                </a>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
       </div>
     </section>
   );
